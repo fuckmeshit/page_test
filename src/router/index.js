@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../components/index.vue'
 import UserManage from '../components/usermanage.vue'
+import MvManage from '../components/moviemanage.vue'
 Vue.use(Router)
 export default new Router({
     routes:[
@@ -17,7 +18,13 @@ export default new Router({
                 path:'usermanage',
                 name:'UserManage',
                 component:UserManage
-            }]
+            },
+            {
+                path:'mvmanage',
+                name:'MvManage',
+                component:MvManage
+            }
+        ]
         }
     ]
 })

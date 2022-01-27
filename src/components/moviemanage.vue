@@ -2,7 +2,7 @@
 <div>
     <el-row gutter="20">
         <el-col span="6">
-            <el-input v-model="input" placeholder="请输入该用户的昵称"></el-input>
+            <el-input v-model="input" placeholder="请输入电影名"></el-input>
         </el-col>
         <el-col span="2">
             <el-button type="primary" icon="el-icon-search">搜索</el-button>
@@ -12,30 +12,22 @@
       :data="tableData"
       style="width: 100%">
       <el-table-column
-        prop="id"
-        label="用户id"
+        prop="mvid"
+        label="电影id"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="name"
-        label="姓名"
+        prop="mvname"
+        label="电影名"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="password"
-        label="密码">
+        prop="mvpeformer"
+        label="电影演员表">
       </el-table-column>
       <el-table-column
-        prop="email"
-        label="邮件地址">
-      </el-table-column>
-      <el-table-column
-        prop="edit"
-        label="edit">
-      </el-table-column>
-      <el-table-column
-        prop="delete"
-        label="delete">
+        prop="mvtype"
+        label="电影类型">
       </el-table-column>
     </el-table>
 </div>
@@ -44,7 +36,7 @@
 
 <script>
 export default {
-    name:"usermanage",
+    name:"mvmanage",
     data() {
         return {
           tableData: []
