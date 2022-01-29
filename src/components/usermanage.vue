@@ -17,7 +17,7 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="name"
+        prop="username"
         label="姓名"
         width="180">
       </el-table-column>
@@ -29,27 +29,50 @@
         prop="email"
         label="邮件地址">
       </el-table-column>
-      <el-table-column
-        prop="edit"
-        label="edit">
-      </el-table-column>
-      <el-table-column
-        prop="delete"
-        label="delete">
-      </el-table-column>
+      <div class="block">
+</div>
+  
     </el-table>
+    <div class="block">
+  <el-pagination
+    layout="prev, pager, next"
+    :page-size="pageSize"
+    :total="total"
+    :current-page.sync="currentPage"
+    @current-change="page">
+  </el-pagination>
+</div>
 </div>
 
 </template>
 
 <script>
+var axios = require('axios')
 export default {
     name:"usermanage",
     data() {
         return {
-          tableData: []
+          tableData: '',
+          pageSize:10,
+          total:100,
+          currentPage:1
+          }
+        },
+        methods:{
+        page(currentPage){
+          console.log(currentPage)
+          const _this=this
+          axios.get("http://localhost:8443/api/user/"+currentPage+"/"+this.pageSize).then(function(resp){
+            _this.tableData=resp.data
+          })
         }
-      }
+      },
+      created(){
+        const _this=this
+          axios.get("http://localhost:8443/api/user/1/"+this.pageSize).then(function(resp){
+            _this.tableData=resp.data
+          })
+        }
 }
 </script>
 <style>
