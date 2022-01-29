@@ -29,6 +29,17 @@
         prop="email"
         label="邮件地址">
       </el-table-column>
+      <el-table-column label="操作">
+      <template slot-scope="scope">
+        <el-button
+          size="mini"
+          @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+        <el-button
+          size="mini"
+          type="danger"
+          @click="handleDelete(scope.$index, scope.row)">删除</el-button>
+      </template>
+    </el-table-column>
       <div class="block">
 </div>
   
@@ -47,6 +58,7 @@
 </template>
 
 <script>
+
 var axios = require('axios')
 export default {
     name:"usermanage",
@@ -62,14 +74,14 @@ export default {
         page(currentPage){
           console.log(currentPage)
           const _this=this
-          axios.get("http://localhost:8443/api/user/"+currentPage+"/"+this.pageSize).then(function(resp){
+          axios.get("http://localhost:8443/api/user/"+(currentPage-1)+"/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
           })
         }
       },
       created(){
         const _this=this
-          axios.get("http://localhost:8443/api/user/1/"+this.pageSize).then(function(resp){
+          axios.get("http://localhost:8443/api/user/0/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
           })
         }
