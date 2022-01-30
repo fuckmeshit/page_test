@@ -2,10 +2,10 @@
 <div>
     <el-row gutter="20">
         <el-col span="6">
-            <el-input v-model="input" placeholder="请输入该用户的昵称"></el-input>
+            <el-input v-model="input1" type="text" placeholder="请输入该用户的昵称"></el-input>
         </el-col>
         <el-col span="2">
-            <el-button type="primary" icon="el-icon-search">搜索</el-button>
+            <el-button type="primary" icon="el-icon-search" v-on:click="userSearch">搜索</el-button>
         </el-col>
     </el-row>
     <el-table
@@ -67,16 +67,23 @@ export default {
           tableData: '',
           pageSize:10,
           total:100,
-          currentPage:1
+          currentPage:1,
+          input1:''
           }
         },
         methods:{
         page(currentPage){
-          console.log(currentPage)
           const _this=this
           axios.get("http://localhost:8443/api/user/"+(currentPage-1)+"/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
           })
+        },
+        userSearch(){
+          const _this=this;
+          axios.get("http://localhost:8443/api/usersearch/"+this.input1).then(function(resp){
+            _this.total=1;
+            _this.tableData=resp.data;
+                    })
         }
       },
       created(){
