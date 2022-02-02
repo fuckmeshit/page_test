@@ -22,6 +22,10 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+### 2022/2/1 更新日志
+Date:2022/2/1
+ goal: 完成电影信息页面对应的前端页面的展示
+ 
 ### 2022/1/29年更新日志
 完成了有关分页显示内容的制作，但是total部分需要重新进行分页，这部分在后台没有做完。
 有关查询模块，我不太清楚是单独分开一个页面做一个模块，还是直接在原本的页面上制作。

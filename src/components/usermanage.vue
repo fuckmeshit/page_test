@@ -90,6 +90,7 @@ export default {
         const _this=this
           axios.get("http://localhost:8443/api/user/0/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
+            console.log(resp.data)
           })
         }
 }
