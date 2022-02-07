@@ -82,6 +82,7 @@ export default {
           const _this=this;
           axios.get("http://localhost:8443/api/usersearch/"+this.input1).then(function(resp){
             _this.total=1;
+            console.log(resp.data)
             _this.tableData=resp.data;
                     })
         }
