@@ -9,6 +9,7 @@
         </el-col>
     </el-row>
     <el-table
+    border="true"
       :data="tableData"
       style="width: 100%">
       <el-table-column
@@ -63,8 +64,8 @@ export default {
     data() {
         return {
           tableData: '',
-          pageSize:5,
-          total:20,
+          pageSize:10,
+          total:3583,
           currentPage:1,
           input1:''
         }

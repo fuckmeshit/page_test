@@ -9,6 +9,7 @@
         </el-col>
     </el-row>
     <el-table
+    border="true"
       :data="tableData"
       style="width: 100%">
       <el-table-column
@@ -85,6 +86,26 @@ export default {
             console.log(resp.data)
             _this.tableData=resp.data;
                     })
+        },
+        handleEdit(indexs,rows){
+          /**
+          设置跳转到update页面
+          目前问题是设置跳转后没有页面显示出来
+           */
+           this.$router.push("updateuser?id="+rows.id);
+        },
+        handleDelete(index,rows){
+          const _this=this;
+          
+          axios.get("http://localhost:8443/api/userdelete/"+rows.id).then(successResponse => {
+          this.responseResult = JSON.stringify(successResponse.data)
+          if (successResponse.data.code === 200) {
+           axios.get("http://localhost:8443/api/user/"+(this.currentPage-1)+"/"+this.pageSize).then(function(resp){
+            _this.tableData=resp.data
+          })
+          }
+        }).catch(failResponse => {// eslint-disable-line no-unused-vars
+        })
         }
       },
       created(){

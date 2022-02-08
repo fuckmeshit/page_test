@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from '../components/index.vue'
 import UserManage from '../components/usermanage.vue'
 import MvManage from '../components/moviemanage.vue'
+import UpdateUser from '../components/update.vue'
 Vue.use(Router)
 export default new Router({
     routes:[
@@ -17,13 +18,20 @@ export default new Router({
             children:[{
                 path:'usermanage',
                 name:'UserManage',
-                component:UserManage
+                component:UserManage,
+            },
+            {
+                path:'updateuser',
+                name:'userUpdate',
+                component:UpdateUser
             },
             {
                 path:'mvmanage',
                 name:'MvManage',
                 component:MvManage
-            }
+            },
+            
+            
         ]
         }
     ]
