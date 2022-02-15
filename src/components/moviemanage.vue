@@ -71,6 +71,26 @@ export default {
         }
       },
       methods:{
+        handleDelete(index,rows){
+          const _this=this;
+          
+          axios.get("http://localhost:8443/api/moviedelete/"+rows.id).then(successResponse => {
+          this.responseResult = JSON.stringify(successResponse.data)
+          if (successResponse.data.code === 200) {
+           axios.get("http://localhost:8443/api/movie/"+(this.currentPage-1)+"/"+this.pageSize).then(function(resp){
+            _this.tableData=resp.data
+          })
+          }
+        }).catch(failResponse => {// eslint-disable-line no-unused-vars
+        })
+        },
+        handleEdit(indexs,rows){
+          /**
+          设置跳转到update页面
+          目前问题是设置跳转后没有页面显示出来
+           */
+           this.$router.push("updatemovie?id="+rows.id);
+        },
         search(){
           /**
           电影查找，不知道需不需要配置模糊查找，具体看后续可以进行调整 */
