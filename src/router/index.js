@@ -5,6 +5,7 @@ import UserManage from '../components/usermanage.vue'
 import MvManage from '../components/moviemanage.vue'
 import UpdateUser from '../components/update.vue'
 import movieUpdate from '../components/movieupdate.vue'
+import commentManage from '../components/comment.vue'
 Vue.use(Router)
 export default new Router({
     routes:[
@@ -20,6 +21,11 @@ export default new Router({
                 path:'usermanage',
                 name:'UserManage',
                 component:UserManage,
+            }
+            ,{
+                path:'commentmanage',
+                name:'评论管理',
+                component:commentManage
             },
             {
                 path:'updateuser',

@@ -11,7 +11,13 @@
             <span slot="title" v-on:click="toUser">用户信息管理</span>
         </el-menu-item>
         <el-menu-item index="3">
-            <span slot="title">评论管理</span>
+            <span slot="title" v-on:click="toComment">评论管理</span>
+        </el-menu-item>
+        <el-menu-item index="4">
+            <span slot="title">评分管理</span>
+        </el-menu-item>
+        <el-menu-item index="5">
+            <span slot="title">xx管理</span>
         </el-menu-item>
         </el-menu>
     </el-aside>
@@ -25,6 +31,9 @@ export default {
         },
         toMovie(){
             this.$router.push("/index/mvmanage")
+        },
+        toComment(){
+            this.$router.push("/index/commentmanage")
         }
     }
 }
