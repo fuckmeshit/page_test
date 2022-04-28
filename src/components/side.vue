@@ -14,7 +14,7 @@
             <span slot="title" v-on:click="toComment">评论管理</span>
         </el-menu-item>
         <el-menu-item index="4">
-            <span slot="title">评分管理</span>
+            <span slot="title" v-on:click="toScore">评分管理</span>
         </el-menu-item>
         <el-menu-item index="5">
             <span slot="title">xx管理</span>
@@ -34,6 +34,9 @@ export default {
         },
         toComment(){
             this.$router.push("/index/commentmanage")
+        },
+        toScore(){
+            this.$router.push("/index/scoremanage")
         }
     }
 }

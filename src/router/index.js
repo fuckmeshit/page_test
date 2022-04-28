@@ -6,6 +6,8 @@ import MvManage from '../components/moviemanage.vue'
 import UpdateUser from '../components/update.vue'
 import movieUpdate from '../components/movieupdate.vue'
 import commentManage from '../components/comment.vue'
+import scoreManage from '../components/score.vue'
+
 Vue.use(Router)
 export default new Router({
     routes:[
@@ -41,6 +43,10 @@ export default new Router({
                 path:'updatemovie',
                 name:'更新电影',
                 component:movieUpdate
+            },{
+                path:'scoremanage',
+                name:'评分管理',
+                component:scoreManage
             }
             
             

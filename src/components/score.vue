@@ -28,18 +28,14 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="comment"
-        label="评价内容">
-      </el-table-column>
-      <el-table-column
-        prop="ischecked"
-        label="是否已审核">
+        prop="score"
+        label="评分">
       </el-table-column>
       <el-table-column label="操作">
       <template slot-scope="scope">
         <el-button
           size="mini"
-          @click="handleEdit(scope.$index, scope.row)">确认审核</el-button>
+          @click="handleEdit(scope.$index, scope.row)">修改</el-button>
         <el-button
           size="mini"
           type="danger"
@@ -78,11 +74,10 @@ export default {
       methods:{
         handleDelete(index,rows){
           const _this=this;
-          
-          axios.get("http://localhost:8443/api/commentdelete/"+rows.id).then(successResponse => {
+          axios.get("http://localhost:8443/api/scoredelete/"+rows.id).then(successResponse => {
           this.responseResult = JSON.stringify(successResponse.data)
           if (successResponse.data.code === 200) {
-           axios.get("http://localhost:8443/api/commentmanage/"+(this.currentPage-1)+"/"+this.pageSize).then(function(resp){
+           axios.get("http://localhost:8443/api/scoremanage/"+(this.currentPage-1)+"/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
           })
           }
@@ -90,21 +85,8 @@ export default {
         })
         },
         //少了内容，在括号
-        handleEdit(index,rows){
-          /**
-          交给后台操作
-           */
-              const _this=this;
+        handleEdit(){
           
-          axios.get("http://localhost:8443/api/commentchecked/"+rows.id).then(successResponse => {
-          this.responseResult = JSON.stringify(successResponse.data)
-          if (successResponse.data.code === 200) {
-           axios.get("http://localhost:8443/api/commentmanage/"+(this.currentPage-1)+"/"+this.pageSize).then(function(resp){
-            _this.tableData=resp.data
-          })
-          }
-        }).catch(failResponse => {// eslint-disable-line no-unused-vars
-        })
         },
         search(){
           /**
@@ -118,14 +100,14 @@ export default {
         },
         page(currentPage){
           const _this=this
-          axios.get("http://localhost:8443/api/commentmanage/"+(currentPage-1)+"/"+this.pageSize).then(function(resp){
+          axios.get("http://localhost:8443/api/scoremanage/"+(currentPage-1)+"/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
           })
         }
       },
       created(){
         const _this=this
-          axios.get("http://localhost:8443/api/commentmanage/0/"+this.pageSize).then(function(resp){
+          axios.get("http://localhost:8443/api/scoremanage/0/"+this.pageSize).then(function(resp){
             _this.tableData=resp.data
             console.log(resp.data)
           })
